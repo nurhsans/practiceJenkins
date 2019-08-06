@@ -1,3 +1,5 @@
+abcs = [‘san’, 'testgit2']
+
 pipeline {
     agent any 
     stages {
@@ -9,12 +11,17 @@ pipeline {
                 dir('testgit2') {
                     git url: 'https://github.com/nurhsans/testgit2.git'
                 }
-                // dir('CombinationBuilder') {
-                //     git url: 'https://github.com/AtlasBID/CombinationBuilder.git'
-                // }
+		echo_all(abcs)
 
                 sh('ls')
             }
         }
+    }
+}
+
+@NonCPS // has to be NonCPS or the build breaks on the call to .each
+def echo_all(list) {
+    list.each { item ->
+        echo "Hello ${item}"
     }
 }
