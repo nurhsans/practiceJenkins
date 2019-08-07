@@ -3,7 +3,7 @@ abcs = ['san', 'testgit2']
 pipeline {
     agent any 
     stages {
-        stage('Stage 1') {
+        stage(‘Pulling all code’) {
             steps {
 		echo_all(abcs)
             }
@@ -15,10 +15,10 @@ pipeline {
 def echo_all(list) {
     list.each { item ->
         echo "Hello ${item}"
-	new File("${item}").mkdir()
 		
 	 dir(item) {
            git url: "https://github.com/nurhsans/${item}.git"
          }
+	echo “${item} has been pulled”
     }
 }
