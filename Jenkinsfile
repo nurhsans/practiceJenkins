@@ -15,6 +15,8 @@ pipeline {
 def echo_all(list) {
     list.each { item ->
         echo "Hello ${item}"
+	sh ‘mkdir ${item}’
+		
 	 dir(item) {
            git url: "https://github.com/nurhsans/${item}.git"
          }
