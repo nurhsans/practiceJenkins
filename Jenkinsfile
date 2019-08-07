@@ -3,7 +3,7 @@ abcs = ['san', 'testgit2']
 pipeline {
     agent any 
     stages {
-        stage(‘Pulling all code’) {
+        stage('Pulling all code') {
             steps {
 		echo_all(abcs)
             }
