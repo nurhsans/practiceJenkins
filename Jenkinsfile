@@ -1,4 +1,4 @@
-abcs = ['san', 'testgit2']
+abcs = ['testgit2’, ’san']
 
 pipeline {
     agent any 
