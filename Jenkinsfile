@@ -23,6 +23,6 @@ node {
         def changeSet= currentBuild.getChangeSets()
 //        changeSet.getItems()
 
-        echo "Changesets: ${changeSet.getItems()}"
+        echo "Changesets: ${changeSet.size()}"
     }
 }
