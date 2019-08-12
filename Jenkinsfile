@@ -49,14 +49,11 @@ pipeline {
     agent any
     stages {
         stage('Stage 1') {
-            steps {
-                for (int i = 0; i < abcs.size(); i++) {
-                    sh "echo Hello ${abcs[i]}"
-                    dir(${abcs[i]}) {
-                        git url: "https://github.com/nurhsans/${abcs[i]}.git"
-                    }
+            for (int i = 0; i < abcs.size(); i++) {
+                sh "echo Hello ${abcs[i]}"
+                dir(${abcs[i]}) {
+                    git url: "https://github.com/nurhsans/${abcs[i]}.git"
                 }
-
             }
         }
     }
