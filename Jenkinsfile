@@ -14,7 +14,7 @@ node {
         }
     }
     stage('Print out all pulled jobs') {
-        sh 'ls'
+        sh 'ls builds'
     }
     stage('Get jobs changeSet') {
         def log = "Log: "
