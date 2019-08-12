@@ -3,11 +3,12 @@ abcs = ['testgit2', 'san']
 pipeline {
     agent any 
     stages {
-        stage('Pulling all code') {
-            steps {
-		echo_all(abcs)
-            }
-        }
+        echo_stages(abcs)
+//        stage('Pulling all code') {
+//            steps {
+//		echo_all(abcs)
+//            }
+//        }
     }
 }
 
@@ -19,6 +20,23 @@ def echo_all(list) {
 	 dir(item) {
            git url: "https://github.com/nurhsans/${item}.git"
          }
-	echo “${item} has been pulled”
+	echo "${item} has been pulled"
+    }
+}
+
+
+@NonCPS
+def echo_stages(list) {
+    list.each { item ->
+        echo "stage ${item}"
+
+        stage(item) {
+            steps {
+                dir(item) {
+                    git url: "https://github.com/nurhsans/${item}.git"
+                }
+            }
+        }
+
     }
 }
