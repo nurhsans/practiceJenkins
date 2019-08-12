@@ -20,9 +20,15 @@ node {
         }
     }
     stage('Get jobs changeSet') {
-        def changeSet= currentBuild.getChangeSets()
-//        changeSet.getItems()
+        def changeLogSets= currentBuild.getChangeSets()
+        echo "Changesets: ${changeLogSets.size()}"
 
-        echo "Changesets: ${changeSet.size()}"
+        for (int i = 0; i < changeLogSets.size(); i++) {
+            def entries = changeLogSets[i].items
+            for (int j = 0; j < entries.length; j++) {
+                def entry = entries[j]
+                log += "* ${entry.msg} by ${entry.author} \n"
+            }
+        }
     }
 }
