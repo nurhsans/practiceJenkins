@@ -8,7 +8,7 @@ node {
         }
         for (int i = 0; i < abcs.size(); i++) {
             sh "echo Hello ${abcs[i]}"
-            dir("${abcs[i]}") {
+            dir("builds/${abcs[i]}") {
                 git url: "https://github.com/nurhsans/${abcs[i]}.git"
             }
         }
