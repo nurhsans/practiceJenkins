@@ -45,7 +45,7 @@ abcs = ['testgit2', 'san']
 
 
 
-pipeline {
+node {
     agent any
         stage('Stage 1') {
             for (int i = 0; i < abcs.size(); i++) {
