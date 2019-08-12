@@ -32,13 +32,13 @@ def echo_stages(list) {
     list.each { item ->
         echo "stage ${item}"
 
-        stage(item) {
+//        stage(item) {
             steps {
                 dir(item) {
                     git url: "https://github.com/nurhsans/${item}.git"
                 }
             }
-        }
+//        }
 
     }
 }
