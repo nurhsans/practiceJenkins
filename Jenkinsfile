@@ -14,22 +14,24 @@ node {
         }
     }
     stage('Print out all pulled jobs') {
-        echo "${abcs.size()}"
-        for (int i = 0; i < abcs.size(); i++) {
-            echo "Hello ${abcs[i]}"
-        }
+        sh 'ls'
     }
     stage('Get jobs changeSet') {
         def log = "Log: "
         def changeLogSets = currentBuild.getChangeSets()
         echo "Changesets: ${changeLogSets.size()}"
 
-        for (int i = 0; i < changeLogSets.size(); i++) {
-            def entries = changeLogSets[i].items
-            for (int j = 0; j < entries.length; j++) {
-                def entry = entries[j]
-                log += "* ${entry.msg} by ${entry.author} \n"
+        if (changeLogSets.size() > 0) {
+            for (int i = 0; i < changeLogSets.size(); i++) {
+                def entries = changeLogSets[i].items
+                for (int j = 0; j < entries.length; j++) {
+                    def entry = entries[j]
+                    log += "* ${entry.msg} by ${entry.author} \n"
+                }
             }
+        }
+        else {
+            log += "No changes form last build"
         }
 
         echo log
