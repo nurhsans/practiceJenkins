@@ -3,12 +3,14 @@ abcs = ['testgit2', 'san']
 pipeline {
     agent any 
     stages {
-        echo_stages(abcs)
+        stage("echoing") {
+            echo_stages(abcs)
 //        stage('Pulling all code') {
 //            steps {
 //		echo_all(abcs)
 //            }
 //        }
+        }
     }
 }
 
