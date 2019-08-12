@@ -14,7 +14,7 @@ node {
         }
     }
     stage('Print out all pulled jobs') {
-        echo "${abcs.size}"
+        echo "${abcs.size()}"
         for (int i = 0; i < abcs.size(); i++) {
             echo "Hello ${abcs[i]}"
         }
@@ -23,6 +23,6 @@ node {
         def changeSet= build.getChangeSet();
         changeSet.getItems();
 
-        echo "Changesets: ${changeSet.getItems()}"
+        echo "Changesets: ${changeSet.getItems()t}"
     }
 }
