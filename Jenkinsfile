@@ -21,7 +21,7 @@ node {
     }
     stage('Get jobs changeSet') {
         def changeLogSets= currentBuild.getChangeSets()
-        echo "Changesets: ${changeLogSets.size()}"
+        echo "Changesets: ${changeLogSetse.size()}"
 
         for (int i = 0; i < changeLogSets.size(); i++) {
             def entries = changeLogSets[i].items
