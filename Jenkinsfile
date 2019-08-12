@@ -13,4 +13,16 @@ node {
             }
         }
     }
+    stage('Print out all pulled jobs') {
+        echo "${abcs.size}"
+        for (int i = 0; i < abcs.size(); i++) {
+            echo "Hello ${abcs[i]}"
+        }
+    }
+    stage('Get jobs changeSet') {
+        def changeSet= build.getChangeSet();
+        changeSet.getItems();
+
+        echo "Changesets: ${changeSet.getItems()}"
+    }
 }
