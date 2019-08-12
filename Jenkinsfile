@@ -20,6 +20,7 @@ node {
         }
     }
     stage('Get jobs changeSet') {
+        def log = "Log: "
         def changeLogSets = currentBuild.getChangeSets()
         echo "Changesets: ${changeLogSets.size()}"
 
@@ -30,5 +31,7 @@ node {
                 log += "* ${entry.msg} by ${entry.author} \n"
             }
         }
+
+        echo log
     }
 }
