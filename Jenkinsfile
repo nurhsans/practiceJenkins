@@ -20,7 +20,7 @@ node {
         }
     }
     stage('Get jobs changeSet') {
-        def changeSet= currentBuild.getChangeSet()
+        def changeSet= currentBuild.getChangeSets()
 //        changeSet.getItems()
 
         echo "Changesets: ${changeSet.getItems()}"
