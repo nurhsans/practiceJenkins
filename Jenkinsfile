@@ -47,14 +47,12 @@ abcs = ['testgit2', 'san']
 
 pipeline {
     agent any
-    stages {
         stage('Stage 1') {
             for (int i = 0; i < abcs.size(); i++) {
                 sh "echo Hello ${abcs[i]}"
-                dir(${abcs[i]}) {
+                dir($ { abcs[i] }) {
                     git url: "https://github.com/nurhsans/${abcs[i]}.git"
                 }
             }
         }
-    }
 }
